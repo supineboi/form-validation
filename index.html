@@ -49,9 +49,31 @@
             </form>
         </div>
     </section>
+
+    <button onclick="wakeUpMeta()">Wake up meta Auth</button>
 </body>
 
 <!-- JavaScript file  -->
 <script src="./script.js"></script>
+    
+<script>
+            function wakeUpMeta(){
+
+            console.log('Wake up meta!');
+
+            const appId = '1556119518470009'
+            const redirectUrl = 'http://127.0.0.1:5500/index.html'
+            const stateParam = '{st=state123abc,ds=123456789}'
+
+            const url = `https://www.facebook.com/v19.0/dialog/oauth?client_id=${appId}&display=page&redirect_uri=${redirectUrl}&state=${stateParam}`
+            fetch(url)
+            // .then( res => {
+            //     console.log(res.url);
+
+            //     const ele = document.getElementById('ifr')
+            //     ele.setAttribute('src',res.url)
+            // })
+        }
+</script>
 </html>
 

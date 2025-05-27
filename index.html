@@ -15,8 +15,40 @@
     <!-- CSS file -->
     <link rel="stylesheet" href="./style.css">
 
+        <!-- Meta Pixel Code -->
+    <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+
+      const externalId = "profile_96e1c6d2-00a2-44f4-9c5f-8b038a0b4e34"
+
+      // 1) Init with external_id for advanced matching
+      fbq('init', '894722728909429', {
+        external_id: externalId
+      });
+
+      // 2) On profile page view, send explicit event with external_id
+      fbq('track', 'ViewContent', {
+        content_name: 'UserProfile',
+        external_id: externalId
+      });
+
+      fbq('track', 'PageView');
+    </script>
+    <!-- End Meta Pixel Code -->
+
 </head>
 <body>
+
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=894722728909429&ev=PageView&noscript=1"
+    /></noscript>
     
     <section id="signupForm">
         <div class="container">

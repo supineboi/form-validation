@@ -27,9 +27,26 @@
       'https://connect.facebook.net/en_US/fbevents.js');
 
       const externalId = "profile_" + Math.random().toString(36).substring(2) + "_" + Date.now();
+      function generateRandomEmail(domainList = ['gmail.com', 'yahoo.com', 'hotmail.com']) {
+          const chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
+          const nameLength = Math.floor(Math.random() * 6) + 5; // length 5 to 10
+          let username = '';
+        
+          for (let i = 0; i < nameLength; i++) {
+            username += chars.charAt(Math.floor(Math.random() * chars.length));
+          }
+        
+          const domain = domainList[Math.floor(Math.random() * domainList.length)];
+        
+          return `${username}@${domain}`;
+      }
+      const email = generateRandomEmail();
 
       // 1) Init with external_id for advanced matching
-      fbq('init', '894722728909429');
+      fbq('init', '894722728909429', {
+            external_id: externalId,
+            em: email
+      });
 
       // Fire PageView event also
       fbq('track', 'PageView');
@@ -40,9 +57,7 @@
     //     external_id: externalId
     //   });
 
-      fbq('trackCustom', 'ProfileVisit', {
-            external_id: externalId
-      });
+      // fbq('trackCustom', 'ProfileVisit' );
 
     </script>
     <!-- End Meta Pixel Code -->

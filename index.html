@@ -29,17 +29,19 @@
       const externalId = "profile_" + Math.random().toString(36).substring(2) + "_" + Date.now();
 
       // 1) Init with external_id for advanced matching
-      fbq('init', '894722728909429', {
-        external_id: externalId
-      });
+      fbq('init', '894722728909429');
 
       // Fire PageView event also
       fbq('track', 'PageView');
 
-      // 2) On profile page view, send explicit event with external_id
-      fbq('track', 'ViewContent', {
-        content_name: 'UserProfile',
-        external_id: externalId
+    //   // 2) On profile page view, send explicit event with external_id
+    //   fbq('track', 'ViewContent', {
+    //     content_name: 'UserProfile',
+    //     external_id: externalId
+    //   });
+
+      fbq('trackCustom', 'ProfileVisit', {
+            external_id: externalId
       });
 
     </script>

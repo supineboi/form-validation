@@ -26,12 +26,15 @@
       s.parentNode.insertBefore(t,s)}(window, document,'script',
       'https://connect.facebook.net/en_US/fbevents.js');
 
-      const externalId = "profile_96e1c6d2-00a2-44f4-9c5f-8b038a0b4e34"
+      const externalId = "profile_" + Math.random().toString(36).substring(2) + "_" + Date.now();
 
       // 1) Init with external_id for advanced matching
       fbq('init', '894722728909429', {
         external_id: externalId
       });
+
+      // Fire PageView event also
+      fbq('track', 'PageView');
 
       // 2) On profile page view, send explicit event with external_id
       fbq('track', 'ViewContent', {
@@ -39,7 +42,6 @@
         external_id: externalId
       });
 
-      fbq('track', 'PageView');
     </script>
     <!-- End Meta Pixel Code -->
 
@@ -69,7 +71,7 @@
                     <input type="text" id="pass" placeholder="Enter password" name="Password">
                     <span></span>
                 </div>
-                <div class="fields">
+                <div class="fields"a>
                     <label for="pass2">Confirm Password</label>
                     <input type="text" id="pass2" placeholder="Enter password again" name="Pass2">
                     <span></span>
@@ -81,31 +83,11 @@
             </form>
         </div>
     </section>
-
-    <button onclick="wakeUpMeta()">Wake up meta Auth</button>
 </body>
 
 <!-- JavaScript file  -->
 <script src="./script.js"></script>
     
 <script>
-            function wakeUpMeta(){
-
-            console.log('Wake up meta!');
-
-            const appId = '1556119518470009'
-            const redirectUrl = 'http://127.0.0.1:5500/index.html'
-            const stateParam = '{st=state123abc,ds=123456789}'
-
-            const url = `https://www.facebook.com/v19.0/dialog/oauth?client_id=${appId}&display=page&redirect_uri=${redirectUrl}&state=${stateParam}`
-            fetch(url)
-            // .then( res => {
-            //     console.log(res.url);
-
-            //     const ele = document.getElementById('ifr')
-            //     ele.setAttribute('src',res.url)
-            // })
-        }
 </script>
 </html>
-
